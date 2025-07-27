@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register as Donor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f4f4f9;
+    }
+
+    .form-container {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Donor Registration</h1>
+    <form method="POST" onsubmit="return validateForm()">
+      <input type="text" name="name" placeholder="Name" required>
+
+      <select name="blood_type" required>
+        <option value="">Select Blood Type</option>
+        <option value="A+ve">A+ve</option>
+        <option value="A-ve">A−ve</option>
+        <option value="B+ve">B+ve</option>
+        <option value="B-ve">B−ve</option>
+        <option value="AB+ve">AB+ve</option>
+        <option value="AB-ve">AB−ve</option>
+        <option value="O+ve">O+ve</option>
+        <option value="O-ve">O−ve</option>
+      </select>
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" name="dob" id="dob" required>
+
+      <select name="gender" required>
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <input type="number" name="age" id="age" placeholder="Age" readonly required>
+
+      <input type="text" name="contact" placeholder="Contact (10-digit)" pattern="\d{10}" title="Enter a 10-digit phone number" required>
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+    // Set max date to today to disable future DOB selection
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("dob").setAttribute("max", today);
+
+    // Calculate age when DOB is selected
+    document.getElementById("dob").addEventListener("change", function () {
+      const dob = new Date(this.value);
+      const ageInput = document.getElementById("age");
+
+      const today = new Date();
+      let age = today.getFullYear() - dob.getFullYear();
+      const m = today.getMonth() - dob.getMonth();
+
+      if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+        age--;
+      }
+
+      ageInput.value = age;
+    });
+
+    // Validate age on form submit
+    function validateForm() {
+      const age = parseInt(document.getElementById("age").value);
+      if (isNaN(age) || age < 18 || age > 90) {
+        alert("Age must be between 18 and 90.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Blood Donation System</title>
+    <style>
+        /* Reset some default styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Center container styling */
+        .container {
+            text-align: center;
+        }
+
+        /* Styling for the button container */
+        .button-box {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Button styling */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Blood Donation System</h1>
+        <div class="button-box">
+            <a href="{{ url_for('signup') }}" class="btn">Signup</a>
+            <a href="{{ url_for('login_selection') }}" class="btn">Login</a>
+        </div>
+    </div>
+</body>
+</html>

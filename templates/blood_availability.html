@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Availability</title>
+    <style>
+        /* Ensure full-page scroll with padding */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .content {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        table {
+            width: 70%;
+            max-width: 900px;
+            margin: 20px 0;
+            border-collapse: collapse;
+            font-size: 18px;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #000000;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-size: 20px;
+        }
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            font-size: 16px;
+            color: #333;
+            background-color: transparent; /* Transparent background */
+            margin-top: auto; /* Push footer to the bottom */
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Blood Availability</h1>
+        <table>
+            <tr>
+                <th>Blood Type</th>
+                <th>Availability</th>
+            </tr>
+            {% for blood in availability %}
+            <tr>
+                <td>{{ blood['blood_type'] }}</td>
+                <td>{{ blood['availability'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+    <div class="footer">
+        &copy; 2024 Blood Bank System
+    </div>
+</body>
+</html>

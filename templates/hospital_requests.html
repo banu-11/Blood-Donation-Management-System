@@ -1,0 +1,42 @@
+<!-- templates/hospital_requests.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ hospital_name }} - Requests</title>
+</head>
+<body>
+    <h1>Hospital: {{ hospital_name }}</h1>
+    <h2>Your Blood Requests</h2>
+    
+    {% if hospital_requests %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Blood Type</th>
+                    <th>Units</th>
+                    <th>Deadline</th>
+                    <th>Status</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in hospital_requests %}
+                    <tr>
+                        <td>{{ request.id }}</td>
+                        <td>{{ request.blood_type }}</td>
+                        <td>{{ request.units }}</td>
+                        <td>{{ request.deadline }}</td>
+                        <td>{{ request.status }}</td>
+                        <td>{{ request.contact }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No requests found for this hospital.</p>
+    {% endif %}
+</body>
+</html>

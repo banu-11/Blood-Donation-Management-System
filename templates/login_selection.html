@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Selection</title>
+    <style>
+        /* Styling for body to center everything */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Container for the buttons */
+        .button-container {
+            text-align: center;
+        }
+
+        /* Style the buttons */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <h1>Login Selection</h1>
+        <a href="{{ url_for('login', role='admin') }}" class="btn">Admin Login</a>
+        <a href="{{ url_for('login', role='donor') }}" class="btn">Donor Login</a>
+        <a href="{{ url_for('login', role='requests') }}" class="btn">Hospital Request Login</a>
+    </div>
+</body>
+</html>

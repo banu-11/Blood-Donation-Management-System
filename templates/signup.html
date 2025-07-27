@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f0f4f8;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #4a5568;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 5px;
+      color: #4a5568;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #d2d6dc;
+      border-radius: 4px;
+      background-color: #f7fafc;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #63b3ed;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #3182ce;
+    }
+
+    .messages {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 4px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .success { background-color: #48bb78; }
+    .error { background-color: #f56565; }
+
+    .link {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .link a {
+      color: #3182ce;
+      text-decoration: none;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <script>
+    function updateEmailPattern() {
+      const role = document.getElementById("role").value;
+      const emailInput = document.getElementById("username");
+
+      if (role === "HOSPITAL") {
+        emailInput.pattern = "^[a-zA-Z0-9._%+-]+@hospital\\.com$";
+        emailInput.title = "Hospital email must be in the format name@hospital.com";
+        emailInput.placeholder = "e.g. iswariya@hospital.com";
+      } else {
+        emailInput.pattern = "^[^@\\s]+@[^@\\s]+\\.[^@\\s]{2,}$";
+        emailInput.title = "Please enter a valid email address like user@example.com";
+        emailInput.placeholder = "Enter your email";
+      }
+
+      emailInput.setCustomValidity('');
+    }
+
+    function validateForm(event) {
+      const role = document.getElementById("role").value;
+      const email = document.getElementById("username").value;
+
+      if (role === "HOSPITAL" && !email.endsWith("@hospital.com")) {
+        event.preventDefault();
+        const input = document.getElementById("username");
+        input.setCustomValidity("Hospitals must use an email ending with @hospital.com");
+        input.reportValidity();
+      }
+    }
+
+    window.onload = function () {
+      updateEmailPattern();
+      const form = document.querySelector("form");
+      form.addEventListener("submit", validateForm);
+    };
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Signup</h2>
+    <form method="POST">
+      <label for="username">Email:</label>
+      <input type="text"
+             name="username"
+             id="username"
+             required
+             oninput="this.setCustomValidity('')"
+             placeholder="Enter your email">
+
+      <label for="password">Password:</label>
+      <input type="password"
+             name="password"
+             id="password"
+             required
+             minlength="8"
+             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$"
+             title="Password must have at least 8 characters with one uppercase, one lowercase, and one special character."
+             placeholder="Enter a strong password">
+
+      <label for="role">Select Role:</label>
+      <select id="role" name="role" onchange="updateEmailPattern()" required>
+        <option value="">-- Select Role --</option>
+        <option value="DONOR">Donor</option>
+        <option value="HOSPITAL">Hospital</option>
+      </select>
+
+      <button type="submit">Signup</button>
+    </form>
+
+        <div class="login-footer">
+            <p>Already have an account? <a href="{{ url_for('login_selection') }}">Login here</a></p>
+        </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="messages">
+          {% for category, message in messages %}
+            <p class="{{ category }}">{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>

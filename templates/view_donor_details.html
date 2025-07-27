@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Donor Details</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            margin-top: 20px; /* Space from the top of the page */
+            text-align: center;
+        }
+        .content {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            box-sizing: border-box; /* Ensure padding doesn’t affect width */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        table {
+            width: 70%;
+            max-width: 900px;
+            margin: 20px 0; /* Space around the table */
+            border-collapse: collapse;
+            font-size: 18px;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #000000;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-size: 20px;
+        }
+        .footer {
+            margin-top: 50px; /* Space between table and footer */
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+            color: #333;
+            background-color: transparent; /* Transparent background */
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Donor Details</h1>
+        
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Blood Type</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Contact</th>
+            </tr>
+            {% for detail in donor_details %}
+            <tr>
+                <td>{{ detail['name'] }}</td>
+                <td>{{ detail['blood_type'] }}</td>
+                <td>{{ detail['dob'] }}</td>
+                <td>{{ detail['gender'] }}</td>
+                <td>{{ detail['age'] }}</td>
+                <td>{{ detail['contact'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+        <div class="footer">
+            &copy; 2024 Donor Management System
+        </div>
+    </div>
+</body>
+</html>

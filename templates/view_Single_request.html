@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Request Details</title>
+</head>
+<body>
+    <h1>Request Details</h1>
+
+    <p><strong>Hospital Name:</strong> {{ request['hospital_name'] }}</p>
+    <p><strong>Hospital Address:</strong> {{ request['hospital_address'] }}</p>
+    <p><strong>Blood Type:</strong> {{ request['blood_type'] }}</p>
+    <p><strong>Units:</strong> {{ request['units'] }}</p>
+    <p><strong>Deadline:</strong> {{ request['deadline'] }}</p>
+    <p><strong>Status:</strong> {{ request['status'] }}</p>
+    <p><strong>Contact:</strong> {{ request['contact'] }}</p>
+
+    <a href="{{ url_for('view_hospital_requests') }}">Back to Requests</a>
+</body>
+</html>

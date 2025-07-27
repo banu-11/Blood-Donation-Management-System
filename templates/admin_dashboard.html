@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        /* Centering and styling for body */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Main container for dashboard */
+        .dashboard-container {
+            text-align: center;
+            width: 100%;
+            max-width: 450px; /* Increased width */
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Title style */
+        h1 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        /* Grid layout for buttons */
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px; /* Increased gap */
+        }
+
+        /* Styling for each dashboard button */
+        .dashboard-link {
+            display: block;
+            padding: 20px 0; /* Increased padding */
+            font-size: 18px; /* Larger font size */
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 8px; /* Slightly rounded corners */
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .dashboard-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Admin Dashboard</h1>
+        <div class="button-grid">
+            <a href="{{ url_for('registered_donors') }}" class="dashboard-link">Registered Donors</a>
+            <a href="{{ url_for('requested_hospitals') }}" class="dashboard-link">Requested Hospitals</a>
+            <a href="{{ url_for('blood_availability') }}" class="dashboard-link">Blood Availability</a>
+            <a href="{{ url_for('logout') }}" class="dashboard-link">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
