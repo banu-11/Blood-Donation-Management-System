@@ -32,13 +32,13 @@ This is a **Blood Donation Management System** built using **Python Flask** and 
    git clone https://github.com/yourusername/blood-donation-system.git
    cd blood-donation-system
 
-  **Create and activate a virtual environment :**
+ 2. **Create and activate a virtual environment :**
 
- -python -m venv venv
-  -source venv/bin/activate  # On Windows: venv\Scripts\activate
-## install requirements
- -pip install -r requirements.txt
-## Run the Flask app
- -python app.py
+  python -m venv venv
+  source venv/bin/activate  # On Windows: venv\Scripts\activate
+3. **install requirements**
+  pip install -r requirements.txt
+4. **Run the Flask app**
+  python app.py
 
 
