@@ -25,20 +25,5 @@ This is a **Blood Donation Management System** built using **Python Flask** and 
 - **Security:** Passwords are securely hashed using `werkzeug.security`
 
 
-## ⚙️ Setup Instructions
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/blood-donation-system.git
-   cd blood-donation-system
-
- 2. **Create and activate a virtual environment :**
-
-  python -m venv venv
-  source venv/bin/activate  # On Windows: venv\Scripts\activate
-3. **install requirements**
-  pip install -r requirements.txt
-4. **Run the Flask app**
-  python app.py
 
 
